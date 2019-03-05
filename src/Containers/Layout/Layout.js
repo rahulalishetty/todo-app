@@ -110,6 +110,32 @@ class Layout extends Component {
     this.addNewTaskHandler(quickTask);
   };
 
+  removeTaskHandler = (task) => {
+    console.log("taskId:", task);
+    let taskCat= task.category;
+    let taskCatList = {...this.state[taskCat]};
+    console.log(taskCatList[task.taskFor]);
+    taskCatList[task.taskFor].forEach((eachTask) => {
+      if(eachTask.id === task.id){
+        console.log("found", taskCatList[task.taskFor].indexOf(eachTask));
+        const index = taskCatList[task.taskFor].indexOf(eachTask);
+        taskCatList[task.taskFor].splice(index, 1);
+      }
+    });
+
+    // console.log("add new task",newTask, "taskCat", taskCat, this.state[taskCat], taskCatList);
+    if(taskCat === "personal") {
+      this.setState({...this.state, personal: taskCatList, idIndicator: this.state.idIndicator+1});
+    }
+    if(taskCat === "work") {
+      this.setState({...this.state, work: taskCatList, idIndicator: this.state.idIndicator+1});
+    }
+    if(taskCat === "groceryList") {
+      this.setState({...this.state, groceryList: taskCatList, idIndicator: this.state.idIndicator+1});
+    }
+
+  };
+
   render () {
     console.log(this.state);
     let stateAsProps={
@@ -145,6 +171,7 @@ class Layout extends Component {
             category={this.state.currentCategory}
             tasks={stateAsProps}
             addQuickTask={this.addQuickTaskHandler}
+            removeTask={this.removeTaskHandler}
           />
         </Aux>
     )

@@ -56,7 +56,12 @@ class TodoCategoryListCard extends Component{
                 if (taskArray.length !== 0) {
                   return taskArray.map((eachTask, index) => {
                     console.log("each Task",eachTask);
-                    return <ListItem eachTask={eachTask} taskSelected={this.taskSelected}/>
+                    return <ListItem
+                              key={eachTask.id}
+                              eachTask={eachTask}
+                              taskSelected={this.taskSelected}
+                              removeTask={this.props.removeTask}
+                          />
                   })
                 }
                 return null;
@@ -72,7 +77,12 @@ class TodoCategoryListCard extends Component{
                   console.log(taskArray);
                     return taskArray[taskType].map((eachTask) => {
                       console.log(eachTask);
-                      return <ListItem eachTask={eachTask} taskSelected={this.taskSelected}/>
+                      return <ListItem
+                                key={eachTask.id}
+                                eachTask={eachTask}
+                                taskSelected={this.taskSelected}
+                                removeTask={this.props.removeTask}
+                              />
                         });
                 })
               }

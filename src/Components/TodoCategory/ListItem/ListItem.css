@@ -1,0 +1,45 @@
+.CheckBox{
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    vertical-align: middle;
+    background-color: white;
+    border: 1px solid lightgrey;
+    outline: none;
+    margin: 0 ;
+    position: absolute;
+}
+
+.TaskName{
+    margin-left: 40px;
+    vertical-align: middle;
+    width: 60%;
+}
+
+.Checked{
+    background-color: lightgrey;
+}
+
+.NameCrossed{
+    text-decoration: line-through;
+}
+
+.Check{
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    color: white;
+    padding: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    vertical-align: middle;
+}
+
+.Cross{
+    margin-left: 50px;
+}
+
+.CrossEx{
+    position: absolute;
+    right: 20px;
+}
