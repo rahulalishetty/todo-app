@@ -1,0 +1,72 @@
+.TaskNameInSummary{
+    margin: 30px 20px;
+    font-size: 24px;
+    font-weight: bold;
+    width: 90%;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.TaskNameInSummary:hover{
+    background-color: #F1F2F4;
+}
+
+.TaskButtonDiv{
+    width: 90%;
+    margin: 20px;
+}
+
+.TaskButtonDiv div{
+    display: inline-block;
+    padding: 10px;
+    margin: 0 4px;
+    border: 1px solid #F1F2F4;
+    box-shadow: 2px 2px 2px 2px rgba(235, 235, 238,0.5);
+    border-radius: 5px;
+    height: 50px;
+    width: 25%;
+    float: left;
+    text-align: center;
+}
+
+.TaskButtonDiv div p{
+    font-size: 14px;
+    font-weight: lighter;
+}
+
+.TaskButtonDiv div:hover,
+.TaskButtonDiv div:active{
+    box-shadow: 4px 4px 4px 4px rgba(235, 235, 238,0.5);
+}
+
+.NotesDiv{
+    margin: 20px;
+    margin-top: 130px;
+    width: 90%;
+    height: 60px;
+}
+
+.NotesDiv input{
+    border-radius: 5px;
+    border: 0;
+    outline: none;
+    background-color: white;
+    padding-left: 10px;
+    font-size: 20px;
+    font-weight: lighter;
+    color: black;
+    caret-color: #6398F0;
+    font-size: 16px;
+    width: 90%;
+    height: 30px;
+}
+
+.NotesDiv input:hover{
+    background-color: #F1F2F4;
+}
+
+.NotesDiv p{
+    font-size: 13px;
+    color: grey;
+    letter-spacing: 1px;
+}

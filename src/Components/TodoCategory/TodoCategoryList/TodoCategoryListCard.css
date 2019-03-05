@@ -1,0 +1,152 @@
+.Card{
+    width: 420px;
+    height: 420px;
+    background-color: white;
+    box-shadow: 2px 2px 2px 2px #AAAEB2;
+    border-radius: 4px;
+    box-sizing: border-box;
+    display: inline-block;
+    margin-right: 50px;
+    position: relative;
+    float: left;
+}
+
+.TodoCat{
+    font-size: 28px;
+    font-weight: bold;
+    background-color: #F3F4F6;
+    color: black;
+    font-weight: bold;
+}
+
+.CatCard{
+    margin-left: 50px;
+    display: inline-block;
+    float: left;
+}
+
+.CardList{
+    width: 420px;
+    height: 340px;
+    overflow: auto;
+    position: absolute;
+    top:0;
+}
+
+.Card ul{
+    list-style: none;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    margin-top: 14px;
+}
+
+.Card li{
+    width: 300px;
+    height: 40px;
+    padding: 8px 20px;
+    cursor: pointer;
+}
+
+.Card li:hover,
+.Card li:focus,
+.Card li:active{
+   color:#6398F0;
+}
+
+.TodoInput{
+    position: absolute;
+    bottom: 0;
+    width: inherit;
+    height: 62px;
+    box-shadow: -1px -5px 5px 0px #F3F4F6;
+}
+
+.TodoInput input{
+    margin: 10px 15px 10px;
+    width: 340px;
+    height: 40px;
+    border-radius: 20px;
+    border: 1px solid lightgrey;
+    box-sizing: border-box;
+    outline: none;
+    padding-left: 20px;
+}
+
+.TodoInput input:hover,
+.TodoInput input:focus{
+    border-color: #6398F0;
+}
+
+.TodoInput button{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid lightgrey;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: white;
+    color: lightgrey;
+    vertical-align: middle;
+    outline: none;
+}
+
+.TodoInput button:hover {
+    color: white;
+    background-color: #6398F0;
+}
+
+.Card ul ul{
+    list-style: none;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    margin-top: 0;
+}
+
+.Card ul ul li{
+    width: 330px;
+    height: 30px;
+    border: 1px solid lightgrey;
+    margin: 10px 20px;
+    border-radius: 5px;
+    padding-top: 18px;
+    box-shadow: 2px 2px 2px 2px rgba(235, 235, 238,0.5);
+    color: #2E3034;
+    font-size: 16px;
+    font-weight: lighter;
+    position: relative;
+}
+
+.Card ul ul li:hover{
+    color: #2E3034;
+    border: 1px solid #6398F0;
+}
+
+.CheckBox{
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    vertical-align: middle;
+    background-color: white;
+    border: 1px solid lightgrey;
+    outline: none;
+    margin: 0 ;
+    position: absolute;
+}
+
+.Card ul ul li input{
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.TaskName{
+    margin-left: 40px;
+    vertical-align: middle;
+}
+
+
