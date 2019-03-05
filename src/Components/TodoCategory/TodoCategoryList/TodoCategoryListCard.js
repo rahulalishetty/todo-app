@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import './TodoCategoryListCard.css';
 import Card from '../../UI/Card/Card';
 import TaskSummary from '../../TaskSummary/TaskSummary';
+import ListItem from '../ListItem/ListItem';
 
 class TodoCategoryListCard extends Component{
   state={
@@ -47,7 +48,6 @@ class TodoCategoryListCard extends Component{
 
   getTasks = (taskType) => {
     let taskList = null;
-    console.log("tasks",this.props.tasks);
     if(this.props.category === "All Tasks"){
       taskList =
           (<ul>
@@ -56,10 +56,7 @@ class TodoCategoryListCard extends Component{
                 if (taskArray.length !== 0) {
                   return taskArray.map((eachTask, index) => {
                     console.log("each Task",eachTask);
-                    return <li key={eachTask.id} onClick={() => this.taskSelected(eachTask)}>
-                                <div className="CheckBox"> &nbsp; </div>
-                                <span className="TaskName">{eachTask.name}</span>
-                              </li>
+                    return <ListItem eachTask={eachTask} taskSelected={this.taskSelected}/>
                   })
                 }
                 return null;
@@ -71,18 +68,12 @@ class TodoCategoryListCard extends Component{
         taskList = (
             <ul>
               {
-                [...Array(this.props.tasks[taskType])].map((taskArray, index) => {
+                [...Array(this.props.tasks[this.props.category])].map((taskArray, index) => {
                   console.log(taskArray);
-                  if(taskArray !== null && taskArray.length !== 0) {
-                    return taskArray.map((eachTask) => {
+                    return taskArray[taskType].map((eachTask) => {
                       console.log(eachTask);
-                      return <li key={eachTask.id} onClick={() => this.taskSelected(eachTask)}>
-                                <div className="CheckBox"> &nbsp; </div>
-                                <span className="TaskName">{eachTask.name}</span>
-                              </li>
-                        })
-                      }
-                  return null;
+                      return <ListItem eachTask={eachTask} taskSelected={this.taskSelected}/>
+                        });
                 })
               }
             </ul>
@@ -120,7 +111,6 @@ class TodoCategoryListCard extends Component{
     let somedayTask=null;
     let todoTask = null;
 
-    console.log(this.props.tasks);
     if(this.state.showTodayTasks === true){
       todayTask = this.getTasks("today");
     }if(this.state.showTomorrowTasks === true){
