@@ -95,6 +95,7 @@ class TodoCategoryListCard extends Component{
   taskSelected = (task) => {
     console.log(task, this.props);
     this.setState({showTodoTask: task});
+    this.props.updateTask(task);
   };
 
   assignClickedTask = () => {
@@ -102,6 +103,7 @@ class TodoCategoryListCard extends Component{
         task={this.state.showTodoTask}
         notes={this.state.showTodoTask.notes}
         updateNotes={this.props.updateNotes}
+        openDateTimeModal={this.props.openDateTimeModal}
     />
   };
 

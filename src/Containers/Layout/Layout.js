@@ -7,12 +7,15 @@ import SideDrawer from '../../Components/Navigation/SideDrawer/SideDrawer';
 import Modal from "../../Components/UI/Modal/Modal";
 import NewTaskForm from '../../Components/NewTaskForm/NewTaskForm';
 import TodoCategoryListCard from "../../Components/TodoCategory/TodoCategoryList/TodoCategoryListCard";
+import DateTimePicker from '../../Components/DateTimePicker/DateTimePicker';
 
 class Layout extends Component {
   state = {
       showSideDrawer: true,
       showAddTaskModal: false,
+      showDateTimeModal: false,
       currentCategory: "All Tasks",
+      currentTask: null,
       idIndicator: 0,
       personal: {
         today:[],
@@ -68,7 +71,9 @@ class Layout extends Component {
       name: newTask.name,
       notes: newTask.notes,
       category: newTask.category,
-      taskFor: newTask.taskFor
+      taskFor: newTask.taskFor,
+      date: null,
+      time: null
     };
     console.log("new Added task", newAddedTask);
     taskCatList[newTask.taskFor].push(newAddedTask);
@@ -122,7 +127,7 @@ class Layout extends Component {
       name: taskName,
       notes: "",
       category: category,
-      taskFor: "today"
+      taskFor: "today",
     };
 
     this.addNewTaskHandler(quickTask);
@@ -146,6 +151,36 @@ class Layout extends Component {
 
   };
 
+  closeDateTimeModalHandler = (dateTime) => {
+    this.setState({showDateTimeModal: false});
+    if(dateTime !== null){
+      const index=dateTime.indexOf('T');
+      const date=dateTime.substr(0, index);
+      const time=dateTime.substr(index+1);
+      console.log(date, time);
+      let task = this.state.currentTask;
+      let taskCat= task.category;
+      let taskCatList = {...this.state[taskCat]};
+      console.log(taskCatList[task.taskFor]);
+      taskCatList[task.taskFor].forEach((eachTask) => {
+        if(eachTask.id === task.id){
+          const index = taskCatList[task.taskFor].indexOf(eachTask);
+          taskCatList[task.taskFor][index].date = date;
+          taskCatList[task.taskFor][index].time = time;
+        }
+      });
+      this.updateState(taskCat, taskCatList);
+    }
+  };
+
+  openDateTimeModalHandler = () => {
+    this.setState({showDateTimeModal: true});
+  };
+
+  updateTask = (task) => {
+    this.setState({currentTask: task});
+  };
+
   render () {
     console.log(this.state);
     let stateAsProps={
@@ -163,6 +198,11 @@ class Layout extends Component {
                 currentCategory={this.state.currentCategory}
                 addNewTask={this.addNewTaskHandler}
                 closeModal={this.closeAddNewForm}
+            />
+          </Modal>
+          <Modal show={this.state.showDateTimeModal} modalClosed={this.closeDateTimeModalHandler}>
+            <DateTimePicker
+              closeDateTimeModal={ this.closeDateTimeModalHandler }
             />
           </Modal>
           <Toolbar
@@ -183,6 +223,8 @@ class Layout extends Component {
             addQuickTask={this.addQuickTaskHandler}
             removeTask={this.removeTaskHandler}
             updateNotes={this.updateNotesForTask}
+            openDateTimeModal={this.openDateTimeModalHandler}
+            updateTask={this.updateTask}
           />
         </Aux>
     )

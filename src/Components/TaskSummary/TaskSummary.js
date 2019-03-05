@@ -10,7 +10,7 @@ const taskSummary = (props) => {
         <p className="TaskNameInSummary">{props.task.name}</p>
         <div className="TaskButtonDiv">
           <div>
-            <p>Add Reminder</p>
+            <p onClick={props.openDateTimeModal}>Add Reminder</p>
           </div>
           <div>
             <p>Share Task</p>

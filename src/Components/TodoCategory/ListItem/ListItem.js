@@ -43,7 +43,7 @@ class ListItem extends Component{
         >
           <div className={checkBoxStyles} onClick={this.taskCheckedHandler}> &nbsp; </div>
           {check}
-          <span className={nameStyle}>{this.props.eachTask.name}</span>
+          <span className={nameStyle}>{this.props.eachTask.name} &nbsp;&nbsp; {this.props.eachTask.time}</span>
           {cross}
         </li>
     );
