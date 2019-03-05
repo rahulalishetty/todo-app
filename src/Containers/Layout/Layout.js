@@ -73,6 +73,32 @@ class Layout extends Component {
     console.log("new Added task", newAddedTask);
     taskCatList[newTask.taskFor].push(newAddedTask);
     // console.log("add new task",newTask, "taskCat", taskCat, this.state[taskCat], taskCatList);
+    this.updateState(taskCat, taskCatList);
+  };
+
+  closeAddNewForm = () => {
+    this.setState({showAddTaskModal: false});
+  };
+
+  updateNotesForTask = (event, task) => {
+    console.log("update", event.target.value, task);
+    let taskCat= task.category;
+    let taskCatList = {...this.state[taskCat]};
+
+    taskCatList[task.taskFor].forEach((eachTask) => {
+      if(eachTask.id === task.id){
+        const index = taskCatList[task.taskFor].indexOf(eachTask);
+        taskCatList[task.taskFor][index].notes = event.target.value;
+      }
+    });
+
+    this.updateState(taskCat, taskCatList);
+    // console.log("add new task",newTask, "taskCat", taskCat, this.state[taskCat], taskCatList);
+
+
+  };
+
+  updateState = (taskCat, taskCatList) => {
     if(taskCat === "personal") {
       this.setState({...this.state, personal: taskCatList, idIndicator: this.state.idIndicator+1});
     }
@@ -82,14 +108,6 @@ class Layout extends Component {
     if(taskCat === "groceryList") {
       this.setState({...this.state, groceryList: taskCatList, idIndicator: this.state.idIndicator+1});
     }
-  };
-
-  closeAddNewForm = () => {
-    this.setState({showAddTaskModal: false});
-  };
-
-  updateNotesForTask = (event) => {
-    console.log("update", event.target.value);
   };
 
   addQuickTaskHandler = (taskName) => {
@@ -124,15 +142,7 @@ class Layout extends Component {
     });
 
     // console.log("add new task",newTask, "taskCat", taskCat, this.state[taskCat], taskCatList);
-    if(taskCat === "personal") {
-      this.setState({...this.state, personal: taskCatList, idIndicator: this.state.idIndicator+1});
-    }
-    if(taskCat === "work") {
-      this.setState({...this.state, work: taskCatList, idIndicator: this.state.idIndicator+1});
-    }
-    if(taskCat === "groceryList") {
-      this.setState({...this.state, groceryList: taskCatList, idIndicator: this.state.idIndicator+1});
-    }
+    this.updateState(taskCat, taskCatList);
 
   };
 
@@ -172,6 +182,7 @@ class Layout extends Component {
             tasks={stateAsProps}
             addQuickTask={this.addQuickTaskHandler}
             removeTask={this.removeTaskHandler}
+            updateNotes={this.updateNotesForTask}
           />
         </Aux>
     )

@@ -24,7 +24,7 @@ const taskSummary = (props) => {
           <input
               className=""
               value={props.task.notes}
-              // onChange={(event) => props.updateNotes(event)}
+              onChange={(event) => props.updateNotes(event, props.task)}
           />
         </div>
       </Card>

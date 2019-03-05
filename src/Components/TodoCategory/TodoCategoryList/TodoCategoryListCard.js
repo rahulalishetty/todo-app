@@ -101,6 +101,7 @@ class TodoCategoryListCard extends Component{
     return <TaskSummary
         task={this.state.showTodoTask}
         notes={this.state.showTodoTask.notes}
+        updateNotes={this.props.updateNotes}
     />
   };
 
