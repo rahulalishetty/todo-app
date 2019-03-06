@@ -152,7 +152,7 @@ class Layout extends Component {
   };
 
   closeDateTimeModalHandler = (dateTime) => {
-    this.setState({showDateTimeModal: false});
+    console.log("type of", typeof dateTime);
     if(dateTime !== null){
       const index=dateTime.indexOf('T');
       const date=dateTime.substr(0, index);
@@ -171,6 +171,7 @@ class Layout extends Component {
       });
       this.updateState(taskCat, taskCatList);
     }
+    this.setState({showDateTimeModal: false});
   };
 
   openDateTimeModalHandler = () => {
